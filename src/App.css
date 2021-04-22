@@ -5,7 +5,7 @@
   padding: 10px;
 }
 
-.libro {
+.libroCard {
   width: 100px;
   height: 200px;
   border: 3px solid rebeccapurple;
@@ -14,6 +14,52 @@
   background-image: url("./lomolibro.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  color: darkblue;
+  font-weight: bolder;
+  padding-top: 1em;
+}
+
+.prestatarios {
+  display: flex;
+  border: 3px solid brown;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.personaCard {
+  width: 100px;
+  height: 200px;
+  border: 3px solid rebeccapurple;
+  border-radius: 8px;
+  margin: 10px;
+  background-image: url("./persona.png");
+
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: center;
+  color: darkblue;
+  font-weight: bolder;
+  padding-top: 1em;
+}
+
+.categorias {
+  display: flex;
+  border: 3px solid brown;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.categoriaCard {
+  width: 100px;
+  height: 200px;
+  border: 3px solid rebeccapurple;
+  border-radius: 8px;
+  margin: 10px;
+  /*background-image: url("./persona.png");*/
+
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: center;
   color: darkblue;
   font-weight: bolder;
   padding-top: 1em;
