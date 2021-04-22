@@ -1,5 +1,5 @@
 import "./App.css";
-import Estante from "./components/estante";
+import Libros from "./components/libros";
 import Prestatarios from "./components/prestatarios";
 import Categorias from "./components/categorias";
 import Inicio from "./components/inicio";
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Router>
         <Route exact path="/" component={Inicio} />
-        <Route path="/estante" component={Estante} />
+        <Route path="/libros" component={Libros} />
         <Route path="/prestatarios" component={Prestatarios} />
         <Route path="/categorias" component={Categorias} />
       </Router>

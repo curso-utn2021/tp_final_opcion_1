@@ -1,35 +1,38 @@
-import PersonaCard from "./prestatarioCard";
+import LibroCard from "./libroCard";
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Prestatarios() {
-  let personas = [];
-  const [listaPersonas, setlistaPersonas] = React.useState([{ nombre: "persona1" }, { nombre: "persona2" }]);
+export default function Libros() {
+  let libros = [];
+
+  const [listado, setListado] = React.useState([{ nombre: "libro1" }, { nombre: "libro2" }]);
 
   React.useEffect(async () => {
-    var respuesta = await axios.get("http://localhost:3001/persona");
+    var respuesta = await axios.get("http://localhost:3001/libro");
 
-    setlistaPersonas(respuesta.data);
+    setListado(respuesta.data);
   }, []);
 
-  listaPersonas.forEach((element, index) => {
-    personas.push(<PersonaCard nombre={element.nombre} key={index} />);
+  listado.forEach((element, index) => {
+    libros.push(<LibroCard nombre={element.nombre} key={index} />);
   });
 
   return (
     <div className="seccion">
       <div className="titulo">
         {" "}
-        <h2>Personas (prestatarios)</h2>{" "}
-      </div>{" "}
-      <div className="coleccionCards"> {personas} </div>
+        <h2> Estante de la biblioteca </h2>{" "}
+      </div>
+
+      <div className="coleccionCards"> {libros} </div>
       <div className="botones">
         {" "}
         <button> Alta</button>{" "}
       </div>
+
       <div className="links">
-        Links de la sección personas (prestatarios):
+        Links de la sección Estante:
         <div>
           {" "}
           <div>
@@ -38,7 +41,7 @@ export default function Prestatarios() {
           </div>
           <div>
             {" "}
-            <Link to="/libros">Ir a estante de libros</Link>{" "}
+            <Link to="/prestatarios">Ir a personas (prestatarios)</Link>{" "}
           </div>
           <div>
             {" "}

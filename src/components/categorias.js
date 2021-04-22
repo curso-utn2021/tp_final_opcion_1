@@ -8,7 +8,7 @@ export default function Categorias() {
   const [listaCategorias, setlistaCategorias] = React.useState([{ nombre: "categoria1" }, { nombre: "categoria2" }]);
 
   React.useEffect(async () => {
-    var respuesta = await axios.get("http://localhost:3001/persona");
+    var respuesta = await axios.get("http://localhost:3001/categoria");
 
     setlistaCategorias(respuesta.data);
   }, []);
@@ -18,13 +18,32 @@ export default function Categorias() {
   });
 
   return (
-    <div>
-      <div className="categorias"> {categorias} </div>{" "}
-      <div>
-        Div de links de funcion Categorias
+    <div className="seccion">
+      <div className="titulo">
+        {" "}
+        <h2> Categorías </h2>{" "}
+      </div>
+      <div className="coleccionCards"> {categorias} </div>{" "}
+      <div className="botones">
+        {" "}
+        <button> Alta</button>{" "}
+      </div>
+      <div className="links">
+        Links de la sección Categorías:
         <div>
           {" "}
-          <Link to="/">Ir al inicio</Link>
+          <div>
+            {" "}
+            <Link to="/">Ir al inicio</Link>{" "}
+          </div>
+          <div>
+            {" "}
+            <Link to="/libros">Ir a estante de libros</Link>{" "}
+          </div>
+          <div>
+            {" "}
+            <Link to="/prestatarios">Ir a personas (prestatarios)</Link>{" "}
+          </div>
         </div>
       </div>
     </div>
