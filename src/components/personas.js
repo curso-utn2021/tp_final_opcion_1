@@ -1,9 +1,9 @@
-import PersonaCard from "./prestatarioCard";
+import PersonaCard from "./personaCard";
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Prestatarios() {
+export default function Personas() {
   let personas = [];
   const [listaPersonas, setlistaPersonas] = React.useState([{ nombre: "persona1" }, { nombre: "persona2" }]);
 
@@ -24,7 +24,7 @@ export default function Prestatarios() {
         <h2>Personas (prestatarios)</h2>{" "}
       </div>{" "}
       <div className="coleccionCards"> {personas} </div>
-      <div className="botones">
+      <div className="botonesDeSeccion">
         {" "}
         <button> Alta</button>{" "}
       </div>

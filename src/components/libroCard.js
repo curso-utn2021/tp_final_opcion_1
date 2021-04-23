@@ -3,7 +3,7 @@ export default function LibroCard(props) {
     <div className="libroCard">
       <div> {props.nombre}</div>
 
-      <div className="botonera">
+      <div className="botoneraInCard">
         <button className="botonTransparentado">Prestar</button>
         <button className="botonTransparentado">Devolver</button>
         <button className="botonTransparentado">Editar</button>

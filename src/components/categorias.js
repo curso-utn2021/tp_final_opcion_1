@@ -24,7 +24,7 @@ export default function Categorias() {
         <h2> Categorías </h2>{" "}
       </div>
       <div className="coleccionCards"> {categorias} </div>{" "}
-      <div className="botones">
+      <div className="botonesDeSeccion">
         {" "}
         <button> Alta</button>{" "}
       </div>
@@ -42,7 +42,7 @@ export default function Categorias() {
           </div>
           <div>
             {" "}
-            <Link to="/prestatarios">Ir a personas (prestatarios)</Link>{" "}
+            <Link to="/personas">Ir a personas (prestatarios)</Link>{" "}
           </div>
         </div>
       </div>

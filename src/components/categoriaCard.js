@@ -3,7 +3,7 @@ export default function CategoriaCard(props) {
     <div className="categoriaCard">
       <div> {props.nombre} </div>
 
-      <div className="botonera">
+      <div className="botoneraInCard">
         <button className="botonTransparentado">Editar</button>
         <button className="botonTransparentado">Borrar</button>
       </div>

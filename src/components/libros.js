@@ -26,7 +26,7 @@ export default function Libros() {
       </div>
 
       <div className="coleccionCards"> {libros} </div>
-      <div className="botones">
+      <div className="botonesDeSeccion">
         {" "}
         <button> Alta</button>{" "}
       </div>
@@ -41,7 +41,7 @@ export default function Libros() {
           </div>
           <div>
             {" "}
-            <Link to="/prestatarios">Ir a personas (prestatarios)</Link>{" "}
+            <Link to="/personas">Ir a personas (prestatarios)</Link>{" "}
           </div>
           <div>
             {" "}

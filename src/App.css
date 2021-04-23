@@ -1,67 +1,77 @@
 .botonTransparentado {
-  background-color: rgba(221, 221, 221, 0.5);
+  background-color: rgba(221, 221, 221, 0.3);
   font-weight: bolder;
-  border: 1px solid black;
+  /* border: 1px solid black;
+  border-radius: 5px; */
+  padding: 1px;
+  margin: 1px;
 }
+.botonTransparentado:hover {
+  background-color: rgba(221, 221, 221, 1);
+  font-weight: bolder;
 
+  padding: 1px;
+  margin: 1px;
+}
 .seccion {
   display: flex;
   flex-direction: column;
   border: 3px solid brown;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .titulo {
   justify-content: center;
-  margin: 10px;
+  margin: 2px;
   display: flex;
   border: 1px solid coral;
   border-radius: 8px;
-  padding: 10px;
+  padding: 2px;
 }
 
 .coleccionCards {
-  margin: 10px;
+  margin: 2px;
   display: flex;
   border: 3px solid coral;
   border-radius: 8px;
-  padding: 10px;
+  padding: 2px;
 }
 
-.botones {
-  margin: 10px;
+.botonesDeSeccion {
+  margin: 2px;
   display: flex;
   border: 3px solid brown;
 
   border-radius: 8px;
-  padding: 10px;
+  padding: 2px;
 }
 .links {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 2px;
   display: flex;
   border-radius: 8px;
-  padding: 10px;
+  padding: 2px;
   border: 3px solid darkred;
 }
 
-.botonera {
-  margin: 10px;
-
+.botoneraInCard {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
   border-radius: 8px;
-  padding: 10px;
+  padding: 2px;
   border: 1px solid brown;
 }
 
 .libroCard {
-  width: 100px;
-  height: 200px;
+  width: 150px;
+  height: 300px;
   border: 3px solid rebeccapurple;
   border-radius: 8px;
-  margin: 10px;
+  margin: 5px;
   background-image: url("./imagenes/lomolibro.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -77,23 +87,23 @@
   display: flex;
   border: 3px solid brown;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .personaCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100px;
-  height: 200px;
+  width: 150px;
+  height: 300px;
   border: 3px solid rebeccapurple;
   border-radius: 8px;
-  margin: 10px;
+  margin: 2px;
   background-image: url("./imagenes/persona.png");
 
   background-repeat: no-repeat;
-  background-size: 50% 50%;
+  background-size: 100% 100%;
   background-position: center;
   color: darkblue;
   font-weight: bolder;
@@ -104,19 +114,19 @@
   display: flex;
   border: 3px solid brown;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .categoriaCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100px;
-  height: 200px;
+  width: 150px;
+  height: 300px;
   border: 3px solid rebeccapurple;
   border-radius: 8px;
-  margin: 10px;
+  margin: 2px;
   background-image: url("./imagenes/categorias.png");
 
   background-repeat: no-repeat;

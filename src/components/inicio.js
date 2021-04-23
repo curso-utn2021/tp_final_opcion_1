@@ -15,7 +15,7 @@ export default function Inicio() {
         </div>
         <div>
           {" "}
-          <Link to="/prestatarios">Ir al ABM de prestatarios</Link>{" "}
+          <Link to="/personas">Ir al ABM de personas (prestatarios)</Link>{" "}
         </div>
         <div>
           {" "}
