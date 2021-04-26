@@ -7,11 +7,13 @@ export default function Categorias() {
   let categorias = [];
   const [listaCategorias, setlistaCategorias] = React.useState([{ nombre: "categoria1" }, { nombre: "categoria2" }]);
 
-  React.useEffect(async () => {
+  const cargaDatosDeServer = async () => {
     var respuesta = await axios.get("http://localhost:3001/categoria");
 
     setlistaCategorias(respuesta.data);
-  }, []);
+  };
+
+  React.useEffect(() => cargaDatosDeServer(), []);
 
   listaCategorias.forEach((element, index) => {
     categorias.push(<CategoriaCard nombre={element.nombre} key={index} />);

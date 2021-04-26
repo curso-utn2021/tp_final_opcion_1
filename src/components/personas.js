@@ -7,11 +7,13 @@ export default function Personas() {
   let personas = [];
   const [listaPersonas, setlistaPersonas] = React.useState([{ nombre: "persona1" }, { nombre: "persona2" }]);
 
-  React.useEffect(async () => {
+  const cargaDatosDeServer = async () => {
     var respuesta = await axios.get("http://localhost:3001/persona");
 
     setlistaPersonas(respuesta.data);
-  }, []);
+  };
+
+  React.useEffect(() => cargaDatosDeServer(), []);
 
   listaPersonas.forEach((element, index) => {
     personas.push(<PersonaCard nombre={element.nombre} key={index} />);
