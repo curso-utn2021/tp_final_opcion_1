@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Categorias() {
   let categorias = [];
-  const [listaCategorias, setlistaCategorias] = React.useState([{ nombre: "categoria1" }, { nombre: "categoria2" }]);
+  const [listaCategorias, setlistaCategorias] = React.useState([]);
   const [nuevaCategoria, setNuevaCategoria] = React.useState('');
   const [reload, setReload] = React.useState(false);
   const [mostrarLibros, setMostrarLibros] = React.useState(null);
@@ -33,9 +33,18 @@ export default function Categorias() {
     setMostrarLibros(id);
   }
   
+  /*
   listaCategorias.forEach((element, index) => {
-    categorias.push(<CategoriaCard nombre={element.nombre} id={element.id} key={index} callBack={setReload} onLibros={categoriaLibros} />);
+    categorias.push(<CategoriaCard nombre={element.nombre} id={element.id} key={`categoria_${element.id}`} callBack={setReload} onLibros={categoriaLibros} />);
   });
+  */
+
+  const Categorias = () => (
+    <>
+      {listaCategorias.map((element, index) => <CategoriaCard nombre={element.nombre} id={element.id} key={`categoria_${element.id}`} callBack={setReload} onLibros={categoriaLibros} />)}
+    </>
+  )
+
 
   const crearCategoria = async () => {
     try {
@@ -49,14 +58,16 @@ export default function Categorias() {
   }
 
   const cargarLibros = async () => {
-    try {
-      const respuesta = await axios.get("http://localhost:3001/libro/categoria_id/"+ mostrarLibros);
-      console.log(respuesta.data);
-      setListaLibros(respuesta.data);
-    } catch(e) {
-      console.log(e.message);
-      console.log("No se encontraron libros para esta categoria.");
-      setListaLibros([]);
+    if(mostrarLibros != null){
+      try {
+        const respuesta = await axios.get("http://localhost:3001/libro/categoria_id/"+ mostrarLibros);
+        console.log(respuesta.data);
+        setListaLibros(respuesta.data);
+      } catch(e) {
+        console.log(e.message);
+        console.log("No se encontraron libros para esta categoria.");
+        setListaLibros([]);
+      }
     }
   }
 
@@ -101,7 +112,7 @@ export default function Categorias() {
         <input type="text" name="categoria" placeholder="Categoria" onChange={handleChangeCategoria}></input>
         <button onClick={crearCategoria}> Crear categoria </button>{" "}
       </div>
-      <div className="coleccionCards"> {categorias} </div>{" "}
+      <div className="coleccionCards"> {<Categorias />} </div>{" "}
       <div className="categoriaLibros">
         { mostrarLibros ? <ListadoLibros /> : null }
       </div>
