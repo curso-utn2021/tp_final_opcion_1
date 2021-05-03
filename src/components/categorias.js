@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 export default function Categorias() {
   let categorias = [];
   const [listaCategorias, setlistaCategorias] = React.useState([{ nombre: "categoria1" }, { nombre: "categoria2" }]);
+  const [nuevaCategoria, setNuevaCategoria] = React.useState('');
+  const [reload, setReload] = React.useState(false);
+  const [mostrarLibros, setMostrarLibros] = React.useState(null);
+  const [listaLibros, setListaLibros] = React.useState([]);
 
   const cargaDatosDeServer = async () => {
     var respuesta = await axios.get("http://localhost:3001/categoria");
@@ -15,9 +19,77 @@ export default function Categorias() {
 
   React.useEffect(() => cargaDatosDeServer(), []);
 
+  React.useEffect(() => {
+    setReload(false);
+    cargaDatosDeServer();
+  }, [reload]);
+
+ 
+  const handleChangeCategoria = (e) => {
+    setNuevaCategoria(e.target.value);
+  }
+  
+  const categoriaLibros = (id) => {
+    setMostrarLibros(id);
+  }
+  
   listaCategorias.forEach((element, index) => {
-    categorias.push(<CategoriaCard nombre={element.nombre} key={index} />);
+    categorias.push(<CategoriaCard nombre={element.nombre} id={element.id} key={index} callBack={setReload} onLibros={categoriaLibros} />);
   });
+
+  const crearCategoria = async () => {
+    try {
+      const respuesta = await axios.post("http://localhost:3001/categoria", {nombre: nuevaCategoria});
+      
+      cargaDatosDeServer();
+    } catch(e) {
+      console.log(e.message);
+      console.log("No se pudo crear la categoria.");
+    }
+  }
+
+  const cargarLibros = async () => {
+    try {
+      const respuesta = await axios.get("http://localhost:3001/libro/categoria_id/"+ mostrarLibros);
+      console.log(respuesta.data);
+      setListaLibros(respuesta.data);
+    } catch(e) {
+      console.log(e.message);
+      console.log("No se encontraron libros para esta categoria.");
+      setListaLibros([]);
+    }
+  }
+
+  React.useEffect(() => cargarLibros(), [mostrarLibros]);
+
+  let ListadoLibros = () => (
+  <div> 
+  <h3>{(listaCategorias.find((elem) => elem.id == mostrarLibros)).nombre}</h3><br/>
+  <div>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Prestado a</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    {listaLibros.map((elem)=> (
+      <tr>
+        <td>{elem.id}</td>
+        <td>{elem.nombre}</td>
+        <td>{elem.descripcion}</td>
+        <td>{elem.persona_id}</td>
+      </tr>
+
+    ))}
+    </tbody>
+    </table>
+    </div>
+  </div>)
 
   return (
     <div className="seccion">
@@ -25,10 +97,13 @@ export default function Categorias() {
         {" "}
         <h2> Categorías </h2>{" "}
       </div>
-      <div className="coleccionCards"> {categorias} </div>{" "}
       <div className="botonesDeSeccion">
-        {" "}
-        <button> Alta</button>{" "}
+        <input type="text" name="categoria" placeholder="Categoria" onChange={handleChangeCategoria}></input>
+        <button onClick={crearCategoria}> Crear categoria </button>{" "}
+      </div>
+      <div className="coleccionCards"> {categorias} </div>{" "}
+      <div className="categoriaLibros">
+        { mostrarLibros ? <ListadoLibros /> : null }
       </div>
       <div className="links">
         Links de la sección Categorías:
